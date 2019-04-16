@@ -7,7 +7,7 @@ img_hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
 lower = np.array([40, 8, 80])   #decreased hue
 upper = np.array([80, 28, 200])     #first tweaked the value - increased
 mask = cv.inRange(img_hsv, lower, upper)
-kernel = np.ones([3,3])
+kernel = np.ones([5, 5])
 mask = cv.morphologyEx(mask, cv.MORPH_OPEN, kernel)
 
 cv.imshow("mask for lane", mask)
@@ -26,10 +26,10 @@ if(lines.any()):
 		b = np.sin(theta)
 		x0 = a*r
 		y0 = b*r
-		x1 = int(x0 - 1000*(-b))
-		y1 = int(y0 - 1000*a)
-		x2 = int(x0 + 1000*(-b))
-		y2 = int(y0 + 1000*a)
+		x1 = int(x0 - 2000*(-b))
+		y1 = int(y0 - 2000*a)
+		x2 = int(x0 + 2000*(-b))
+		y2 = int(y0 + 2000*a)
 
 		cv.line(img, (x1, y1), (x2, y2), [0, 0, 255], 2)  #does this funtion return a value or not?
 
